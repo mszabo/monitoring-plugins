@@ -8,5 +8,8 @@ ADD create-sensu-asset /usr/bin/create-sensu-asset
 
 WORKDIR /usr/lib64/nagios/plugins/
 
-RUN yum install -y epel-release which && yum --enablerepo=PowerTools install -y nagios-plugins-all
+RUN \ 
+  yum install -y epel-release which 'dnf-command(config-manager)' && \
+  yum config-manager --set-enabled PowerTools && \
+  yum --enablerepo=PowerTools install -y nagios-plugins-all
 RUN create-sensu-asset -a $SENSU_GO_ASSET_NAME -b $PLUGINS -v $SENSU_GO_ASSET_VERSION -o /
