@@ -4,18 +4,18 @@ compiler:
 services:
 - docker
 script:
-- ./travis-build.sh
+- "./travis-build.sh"
 before_deploy:
 - bash -c "[ ! -d bonsai/ ] && git clone https://github.com/sensu/sensu-go-bonsai-asset.git
   bonsai || echo 'bonsai/ exists, skipping git clone'"
 deploy:
 - provider: script
-  script: ./travis-github-upload.sh
-  cleanup: false 
+  script: "./travis-github-upload.sh"
+  cleanup: false
   skip_cleanup: true
   on:
     tags: true
     all_branches: true
 env:
   global:
-    secure: jZIippZkdDlTLXTohWa/FTZQ/k16dfzefitCpXJpe6UxbWVF0zQrl1kfweZTh+jAQNXZoUZMAIiAYjMB0G9QZWVS2vtrl9sH53yiUC8q+R4DypTUpkOU54p1xxfyKTF4k9jzogKqjlIkH6n91XwlZsqfj1/dL0PKstfNXeGpqWWP1dCRhZftt8WWPdSTXASn0XqPWMqTEOey48CggZxWDUsqzYGjwvdgy5ZSjGTVH/SqsTNTksGV6QOaZ3WPk/PPr2sHBVSfOe9K3jPcau1P6zy17fvpwZxyTKR1ExrTjiB6WFE+cAMGs6vj5XMD3ZcWVn0nvaE3/WTjY4wn0tbvfQHzBQTMfi8dz4Fndc/gq2ioLswASQyqPmwcGva/GJ4M+R2hcREmTqhmwuRhK4gx+7vVD4WYsR7xNuD/vtOlDQpZnPxwSF9hvhYmlGMUC0vzPWuCChi/kM9tVDvtTH66W96A/lqyNUQbLIcLpyBb7jGUCckqGmJnrsuBuN+dG9Aj16cyElPKYXDGpk05zLzAVf0IVS05mAL3MplLgKDfymhmET9s6h9D1lu8KjYA8EWDwdIZH5YAspJIfbSc9cbcHrzVcuvFu1bks178Eck6vN9Cz8A65Zu/Aw4OjNoUBI/OPxpdZlAL4+MUe/7jCSn5ZnlH9ulehzWOzeZdf0VSlxI=
+  - secure: PeYxia+LjPhnnWI3b8CbTQNKlpBCXbz4z8P5giElT3yf+jQ4/OpzwsFk92qmxBts5J279afI98E+z9iU0jfXtk44mLICuL5sM6wuoKp9RLAHIYqZq3CQS4XOC4Rst2+Z7akyGDkV00GhQEUITAuuzOj6We84z1ezHp/6lPFMd4YKEUWh1Z7wVwE2LiTzEEIvGccEed476Z4fKT4dTE9sngM+zWnr5oOcc8113u12jd/h+4dGmofJGB0pFQRPNE//dNYDPTnpohuWLSPcnflc/YZGoyC1dMXycnjKvgJUsaij+b7UvajrZFod5aIlidDMnXwMCvCYfxN7wR/DNqS1L3vIBWoa2PCevJ31VoZ/LJTFpzUneTBitfJSRcKhY7KkOws6BQV20QF1nkXuqe9xdr0hdAas6Yv//kFRBwB0tIO0hHiyntNqWpal3nrrwRMIdGsPDc6H/HwxXHlGLdtgtnq4sn9dprLAo6F6IoBhDgJMgBioRbRGcT3JV2Olzy5C9SSJL9KLINIhsA0p2EcFexchRdhxwSJiISPF0mH7n3LHziEosdpT3GzLaEPu3UYm98UxKGE3EaO3kzs2+a0ahkiqJzQ8EfraW+n99Jv7nB9VsLyfptPmsoD6Vu8eAf4D3ftxKMMt6nID6Bon9tFxdUKydvA248YzwJkmn7JYDKc=
